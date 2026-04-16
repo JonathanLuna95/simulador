@@ -25,5 +25,15 @@ function calcular() {
 
     let cuotaMensual= calcularCuotaMensual(totalPrestamo,plazoEntero);
     recuperarTexto("spnCuotaMensual",cuotaMensual);
+
+    let resultadoCredito = aprobarCredito(capacidadDePago,cuotaMensual);
+  
+    let estadoCredito = document.getElementById("spnEstadoCredito");
+    
+    if(resultadoCredito == true){
+        estadoCredito.innerText= "CRÉDITO APROBADO";
+    } else {
+        estadoCredito.innerText= "CRÉDITO RECHAZADO";
+    }
 }
 
