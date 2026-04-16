@@ -19,6 +19,11 @@ function recuperarTexto(spn,valor){
     texto.innerText=valor.toFixed(2);
 }
 
+function recuperarTextoEntero(spn,valor){
+    let texto = document.getElementById(spn);
+    texto.innerText=valor;
+}
+
 function calcularInteresSimple(monto,tasa,plazoAnios){
     let interes = plazoAnios*monto*(tasa/100);
 
@@ -29,4 +34,11 @@ function recuperarEntero(spn){
     let valor = document.getElementById(spn).value;
     
     return parseInt(valor);
+}
+
+function calcularTotalPagar(monto,interes){
+    let totalAPagar = monto+interes+100;
+    
+    return totalAPagar;
+
 }

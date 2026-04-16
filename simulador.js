@@ -17,10 +17,10 @@ function calcular() {
     let interesPorPagar = calcularInteresSimple(montoEntero,tasaInteresEntero,plazoEntero);
     recuperarTexto("spnInteresPagar", interesPorPagar);
     
-    
     //let interesAPagar = document.getElementById("spnInteresPagar");
-    interesAPagar.innerText=interesPorPagar;
+    //interesAPagar.innerText=interesPorPagar;
 
-
+    let totalPrestamo = calcularTotalPagar(montoEntero,interesPorPagar);
+    recuperarTextoEntero("spnTotalPrestamo",totalPrestamo );
 }
 
