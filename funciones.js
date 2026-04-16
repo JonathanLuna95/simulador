@@ -18,3 +18,15 @@ function recuperarTexto(spn,valor){
     let texto = document.getElementById(spn);
     texto.innerText=valor.toFixed(2);
 }
+
+function calcularInteresSimple(monto,tasa,plazoAnios){
+    let interes = plazoAnios*monto*(tasa/100);
+
+    return interes;
+}
+
+function recuperarEntero(spn){
+    let valor = document.getElementById(spn).value;
+    
+    return parseInt(valor);
+}
