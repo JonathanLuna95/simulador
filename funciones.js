@@ -40,5 +40,11 @@ function calcularTotalPagar(monto,interes){
     let totalAPagar = monto+interes+100;
     
     return totalAPagar;
-
 }
+
+function calcularCuotaMensual(total,plazoAnios){
+    let cuotaMensual = total/(plazoAnios*12);
+
+    return cuotaMensual;
+}
+

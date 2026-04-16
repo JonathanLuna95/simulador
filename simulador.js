@@ -22,5 +22,8 @@ function calcular() {
 
     let totalPrestamo = calcularTotalPagar(montoEntero,interesPorPagar);
     recuperarTextoEntero("spnTotalPrestamo",totalPrestamo );
+
+    let cuotaMensual= calcularCuotaMensual(totalPrestamo,plazoEntero);
+    recuperarTexto("spnCuotaMensual",cuotaMensual);
 }
 
