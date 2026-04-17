@@ -57,3 +57,15 @@ function aprobarCredito(capacidadPago,cuotaMensual){
 
 }
 
+function eliminarCaja(spn){
+    let caja = document.getElementById(spn);
+    caja.value = "";
+
+}
+
+function eliminarTexto(spn){
+    let texto = document.getElementById(spn);
+    texto.innerText = "";
+    
+}
+

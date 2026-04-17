@@ -37,3 +37,19 @@ function calcular() {
     }
 }
 
+function reiniciar(){
+
+    eliminarCaja("txtIngresos");
+    eliminarCaja("txtEgresos");
+    eliminarCaja("txtMonto");
+    eliminarCaja("txtPlazo");
+    eliminarCaja("txtTasaInteres");
+
+    eliminarTexto("spnDisponible");
+    eliminarTexto("spnCapacidadPago");
+    eliminarTexto("spnInteresPagar");
+    eliminarTexto("spnTotalPrestamo");
+    eliminarTexto("spnCuotaMensual");
+
+}
+
