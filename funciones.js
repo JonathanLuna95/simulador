@@ -69,3 +69,15 @@ function eliminarTexto(spn){
     
 }
 
+function mostrarError(idError, mensaje){
+    let error = document.getElementById(idError);
+    error.innerText = mensaje;
+}
+
+function limpiarErrores(){
+    eliminarTexto("errorIngresos");
+    eliminarTexto("errorEgresos");
+    eliminarTexto("errorMonto");
+    eliminarTexto("errorPlazo");
+    eliminarTexto("errorTasa");
+}

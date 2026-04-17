@@ -1,0 +1,49 @@
+Actúa como un experto en desarrollo frontend con HTML, CSS y JavaScript.
+
+Estoy desarrollando un simulador de crédito y necesito agregar validaciones al formulario.
+Quiero que las validaciones se ejecuten únicamente al presionar el botón "Calcular Crédito".
+Los errores deben mostrarse debajo de cada campo correspondiente.
+
+Reglas:
+- Todos los campos son obligatorios
+- Ingresos: numérico, mayor a 0
+- Egresos: numérico, mayor o igual a 0
+- Egresos no pueden ser mayores que ingresos
+- Monto: numérico, mayor a 0
+- Plazo: numérico, entero, mayor a 0, máximo 25 años
+- Tasa de interés: obligatoria
+- Si hay errores, no debe ejecutarse el cálculo
+- Si todo está correcto, el simulador debe continuar normalmente
+
+Necesito ayuda paso a paso, manteniendo separadas las funciones auxiliares en funciones.js y la lógica del formulario en simulador.js.
+
+//Prompt 2
+Ayúdame a mejorar la experiencia de usuario en un formulario de simulador de crédito.
+
+Necesito que los mensajes de error sean claros, cortos y fáciles de entender.
+Los errores deben aparecer debajo de cada campo y desaparecer cuando el usuario corrija la información.
+
+Sugiere buenas prácticas para formularios financieros con enfoque bancario y corporativo.
+
+//Prompt 3
+Quiero mejorar las validaciones de un formulario en JavaScript puro.
+
+Ayúdame a validar:
+- Campos vacíos
+- Tipos de datos numéricos
+- Números negativos
+- Números enteros en el caso del plazo
+- Comparaciones entre campos (ejemplo: egresos no mayores que ingresos)
+
+Explícame cómo estructurar una función validarFormulario() de forma ordenada y reutilizable.
+
+//Prompt 4
+Dame ejemplos de mensajes de error claros, cortos y profesionales para un simulador de crédito bancario.
+
+Los mensajes deben ser:
+- fáciles de entender
+- formales
+- sin tecnicismos
+- orientados al usuario final
+
+Ejemplos: ingresos inválidos, monto incorrecto, plazo fuera de rango.

@@ -13,6 +13,7 @@
     --texto-secundario: #66767b;
     --blanco: #ffffff;
     --sombra: 0 18px 40px rgba(31, 45, 47, 0.08);
+    --rojo-error: #c62828;
 }
 
 body {
@@ -140,9 +141,11 @@ label {
     transform: translateY(-50%);
     font-size: 16px;
     color: #6f8681;
+    z-index: 2;
 }
 
-input {
+input,
+select {
     width: 100%;
     padding: 14px 14px 14px 42px;
     border-radius: 14px;
@@ -151,13 +154,20 @@ input {
     font-size: 15px;
     color: var(--texto-principal);
     transition: all 0.2s ease;
+    font-family: Arial, sans-serif;
 }
 
 input::placeholder {
     color: #98a9a1;
 }
 
-input:focus {
+select {
+    appearance: none;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
     outline: none;
     border-color: var(--verde-principal);
     box-shadow: 0 0 0 4px rgba(105, 189, 39, 0.14);
@@ -168,6 +178,16 @@ input:focus {
     font-size: 13px;
     color: var(--texto-secundario);
     line-height: 1.6;
+}
+
+.error {
+    display: block;
+    margin-top: 6px;
+    min-height: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--rojo-error);
+    line-height: 1.4;
 }
 
 .results-header {
