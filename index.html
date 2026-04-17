@@ -7,42 +7,124 @@
     <link rel="stylesheet" href="simulador.css">
 </head>
 <body>
- 
+
     <div class="container">
-        <h1>Simulador de Crédito</h1>
- 
-        <h2>Datos financieros</h2>
-        <label for="txtIngresos">Ingresos:</label>
-        <input type="text" id="txtIngresos">
- 
-        <label for="txtEgresos">Egresos:</label>
-        <input type="text" id="txtEgresos">
- 
-        <p>Disponible: <span id="spnDisponible" ></span></p>
-        <p>Capacidad de pago mensual: <span id="spnCapacidadPago"></span></p>
- 
-        <h2>Solicitud de crédito</h2>
-        <label for="txtMonto">Monto:</label>
-        <input type="text" id="txtMonto">
- 
-        <label for="txtPlazo">Plazo en años:</label>
-        <input type="text" id="txtPlazo">
- 
-        <label for="txtTasaInteres">Tasa de interés:</label>
-        <input type="text" id="txtTasaInteres">
- 
-        <p>Interés a pagar: <span id="spnInteresPagar"></span></p>
-        <p>Total préstamo: <span id="spnTotalPrestamo"></span></p>
-        <p>Cuota mensual: <span id="spnCuotaMensual"></span></p>
-        <p>Estado de crédito: <span id="spnEstadoCredito">ANALIZANDO...</span></p>
- 
-        <div class="buttons">
-            <button id="btnCalcularCredito" onclick="calcular()">Calcular Crédito</button>
-            <button id="btnReiniciar" onclick="reiniciar()">Reiniciar</button>
+        <div class="header-top">
+            <img src="bpr.png" alt="Logo Produbanco" class="logo-banco">
+
+            <div class="brand-copy">
+                <p class="eyebrow">Simulación financiera</p>
+                <h1>Simulador de Crédito</h1>
+                <p class="subtitle">
+                    Propuesta visual de una experiencia digital bancaria para evaluación financiera y simulación de crédito.
+                </p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section-grid">
+
+                <div class="card">
+                    <h2><span class="icono">💼</span> Datos financieros</h2>
+
+                    <div class="field">
+                        <label for="txtIngresos">Ingresos mensuales</label>
+                        <div class="input-icon">
+                            <span>💲</span>
+                            <input type="text" id="txtIngresos" placeholder="Ej: 2000">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="txtEgresos">Egresos mensuales</label>
+                        <div class="input-icon">
+                            <span>📉</span>
+                            <input type="text" id="txtEgresos" placeholder="Ej: 1500">
+                        </div>
+                    </div>
+
+                    <div class="mini-note">
+                        Ingresa tus valores mensuales para estimar tu capacidad de pago.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2><span class="icono">🏦</span> Solicitud de crédito</h2>
+
+                    <div class="field">
+                        <label for="txtMonto">Monto solicitado</label>
+                        <div class="input-icon">
+                            <span>💵</span>
+                            <input type="text" id="txtMonto" placeholder="Ej: 30000">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="txtPlazo">Plazo en años</label>
+                        <div class="input-icon">
+                            <span>📅</span>
+                            <input type="text" id="txtPlazo" placeholder="Ej: 5">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="txtTasaInteres">Tasa de interés</label>
+                        <div class="input-icon">
+                            <span>📈</span>
+                            <input type="text" id="txtTasaInteres" placeholder="Ej: 12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-header">
+                <h2><span class="icono">📊</span> Resumen de evaluación</h2>
+            </div>
+
+            <div class="resultados">
+                <div class="result-box">
+                    <small>Disponible mensual</small>
+                    <span id="spnDisponible"></span>
+                </div>
+
+                <div class="result-box">
+                    <small>Capacidad de pago</small>
+                    <span id="spnCapacidadPago"></span>
+                </div>
+
+                <div class="result-box">
+                    <small>Interés a pagar</small>
+                    <span id="spnInteresPagar"></span>
+                </div>
+
+                <div class="result-box">
+                    <small>Total préstamo</small>
+                    <span id="spnTotalPrestamo"></span>
+                </div>
+
+                <div class="result-box result-box-wide">
+                    <small>Cuota mensual estimada</small>
+                    <span id="spnCuotaMensual"></span>
+                </div>
+            </div>
+
+            <div class="estado-box">
+                <small>Estado del crédito</small>
+                <span id="spnEstadoCredito">ANALIZANDO...</span>
+            </div>
+
+            <div class="buttons">
+                <button id="btnCalcularCredito" onclick="calcular()">Calcular Crédito</button>
+                <button id="btnReiniciar" onclick="reiniciar()">Reiniciar</button>
+            </div>
+
+            <div class="footer-note">
+                Simulador académico inspirado en una experiencia bancaria corporativa. No representa una herramienta oficial de aprobación real.
+            </div>
         </div>
     </div>
- 
-<script src="funciones.js"></script>
-<script src="simulador.js"></script>
+
+    <script src="funciones.js"></script>
+    <script src="simulador.js"></script>
 </body>
 </html>

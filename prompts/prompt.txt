@@ -1,0 +1,9 @@
+Necesito ahora que me ayudes a modificar la interfaz visual, necesito hacerla como si fuera para el banco produbanco, quisiera tambien colocar el logo en la parte superior, inspirate como si fueramos a presentar el proyecto real al banco, para el logo voy agregar una imagen llamada bpr.png, puedes colocar iconos por ejemplo para Monto, plazo, disponible, etc....., actua como el mejor desarrollador fronted, sorprendeme, te paso el css actual
+
+parece que estas confundido de banco te paso el link
+
+https://www.produbanco.com.ec/
+
+no me gusta ese boton ver analizando muy grande se ve muy informal nada corporativo
+
+ahi esta mejor, pero el tema del boton calcular como que esta muy tedioso ir hasta abajo para poner calcular una vez llenada la informacion, ayudame a mejorar eso
