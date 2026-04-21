@@ -1,168 +1,342 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Crédito</title>
-    <link rel="stylesheet" href="simulador.css">
-</head>
-<body>
+* {
+    box-sizing: border-box;
+}
 
-    <div class="container">
-        <div class="header-top">
-            <img src="bpr.png" alt="Logo Produbanco" class="logo-banco">
+:root {
+    --verde-principal: #69bd27;
+    --verde-hover: #5ca71f;
+    --verde-suave: #eef7e7;
+    --gris-fondo: #f5f7f8;
+    --gris-suave: #f8faf9;
+    --gris-borde: #dce5df;
+    --texto-principal: #1f2d2f;
+    --texto-secundario: #66767b;
+    --blanco: #ffffff;
+    --sombra: 0 18px 40px rgba(31, 45, 47, 0.08);
+    --rojo-error: #c62828;
+}
 
-            <div class="brand-copy">
-                <p class="eyebrow">Simulación financiera</p>
-                <h1>Simulador de Crédito</h1>
-                <p class="subtitle">
-                    Propuesta visual de una experiencia digital bancaria para evaluación financiera y simulación de crédito.
-                </p>
-            </div>
-        </div>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: var(--texto-principal);
+    background: linear-gradient(180deg, #f8faf8 0%, #eef2ef 100%);
+    padding: 32px 16px;
+}
 
-        <div class="content">
-            <div class="section-grid">
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    background: var(--blanco);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--gris-borde);
+    box-shadow: var(--sombra);
+}
 
-                <div class="card">
-                    <h2><span class="icono">💼</span> Datos financieros</h2>
+.header-top {
+    background: linear-gradient(180deg, #ffffff 0%, #f7faf5 100%);
+    padding: 30px 34px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    border-bottom: 5px solid var(--verde-principal);
+}
 
-                    <div class="field">
-                        <label for="txtIngresos">Ingresos mensuales</label>
-                        <div class="input-icon">
-                            <span>💲</span>
-                            <input type="text" id="txtIngresos" placeholder="Ej: 2000">
-                        </div>
-                        <small class="error" id="errorIngresos"></small>
-                    </div>
+.logo-banco {
+    width: 185px;
+    max-width: 100%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: var(--blanco);
+    border: 1px solid #e6ede7;
+}
 
-                    <div class="field">
-                        <label for="txtArriendo">Arriendo</label>
-                        <div class="input-icon">
-                            <span>🏠</span>
-                            <input type="text" id="txtArriendo" placeholder="Ej: 500">
-                        </div>
-                        <small class="error" id="errorArriendo"></small>
-                    </div>
+.brand-copy {
+    flex: 1;
+    min-width: 260px;
+}
 
-                    <div class="field">
-                        <label for="txtAlimentacion">Alimentación</label>
-                        <div class="input-icon">
-                            <span>🍽️</span>
-                            <input type="text" id="txtAlimentacion" placeholder="Ej: 300">
-                        </div>
-                        <small class="error" id="errorAlimentacion"></small>
-                    </div>
+.eyebrow {
+    margin: 0 0 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--verde-principal);
+    font-weight: 700;
+}
 
-                    <div class="field">
-                        <label for="txtVarios">Varios</label>
-                        <div class="input-icon">
-                            <span>🧾</span>
-                            <input type="text" id="txtVarios" placeholder="Ej: 200">
-                        </div>
-                        <small class="error" id="errorVarios"></small>
-                    </div>
+.header-top h1 {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--texto-principal);
+}
 
-                    <div class="mini-note">
-                        Ingresa tus ingresos y gastos mensuales para estimar tu capacidad de pago.
-                    </div>
-                </div>
+.subtitle {
+    margin: 10px 0 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--texto-secundario);
+    max-width: 650px;
+}
 
-                <div class="card">
-                    <h2><span class="icono">🏦</span> Solicitud de crédito</h2>
+.content {
+    padding: 30px;
+}
 
-                    <div class="field">
-                        <label for="txtMonto">Monto solicitado</label>
-                        <div class="input-icon">
-                            <span>💵</span>
-                            <input type="text" id="txtMonto" placeholder="Ej: 30000">
-                        </div>
-                        <small class="error" id="errorMonto"></small>
-                    </div>
+.section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
 
-                    <div class="field">
-                        <label for="txtPlazo">Plazo en años</label>
-                        <div class="input-icon">
-                            <span>📅</span>
-                            <input type="text" id="txtPlazo" placeholder="Ej: 5">
-                        </div>
-                        <small class="error" id="errorPlazo"></small>
-                    </div>
+.card {
+    background: var(--gris-suave);
+    border: 1px solid var(--gris-borde);
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 10px 22px rgba(31, 45, 47, 0.04);
+}
 
-                    <div class="field">
-                        <label for="txtTasaInteres">Tasa de interés</label>
-                        <div class="input-icon">
-                            <span>📈</span>
-                            <select id="txtTasaInteres">
-                                <option value="">Seleccione una tasa</option>
-                                <option value="3">3%</option>
-                                <option value="4">4%</option>
-                                <option value="5">5%</option>
-                                <option value="6">6%</option>
-                                <option value="7">7%</option>
-                                <option value="8">8%</option>
-                                <option value="9">9%</option>
-                                <option value="10">10%</option>
-                            </select>
-                        </div>
-                        <small class="error" id="errorTasa"></small>
-                    </div>
-                </div>
-            </div>
+.card h2,
+.results-header h2 {
+    margin: 0 0 18px;
+    font-size: 20px;
+    color: var(--texto-principal);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ebf0ec;
+}
 
-            <div class="results-header">
-                <h2><span class="icono">📊</span> Resumen de evaluación</h2>
-            </div>
+.icono {
+    font-size: 20px;
+}
 
-            <div class="resultados">
-                <div class="result-box">
-                    <small>Total gastos</small>
-                    <span id="spnTotalGastos"></span>
-                </div>
+.field {
+    margin-bottom: 18px;
+}
 
-                <div class="result-box">
-                    <small>Disponible mensual</small>
-                    <span id="spnDisponible"></span>
-                </div>
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2d4540;
+}
 
-                <div class="result-box">
-                    <small>Capacidad de pago</small>
-                    <span id="spnCapacidadPago"></span>
-                </div>
+.input-icon {
+    position: relative;
+}
 
-                <div class="result-box">
-                    <small>Interés a pagar</small>
-                    <span id="spnInteresPagar"></span>
-                </div>
+.input-icon span {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #6f8681;
+    z-index: 2;
+}
 
-                <div class="result-box">
-                    <small>Total préstamo</small>
-                    <span id="spnTotalPrestamo"></span>
-                </div>
+input,
+select {
+    width: 100%;
+    padding: 14px 14px 14px 42px;
+    border-radius: 14px;
+    border: 1px solid #cad8ce;
+    background: #ffffff;
+    font-size: 15px;
+    color: var(--texto-principal);
+    transition: all 0.2s ease;
+    font-family: Arial, sans-serif;
+}
 
-                <div class="result-box result-box-wide">
-                    <small>Cuota mensual estimada</small>
-                    <span id="spnCuotaMensual"></span>
-                </div>
-            </div>
+input::placeholder {
+    color: #98a9a1;
+}
 
-            <div class="estado-box">
-                <small>Estado del crédito</small>
-                <span id="spnEstadoCredito">ANALIZANDO...</span>
-            </div>
+select {
+    appearance: none;
+    cursor: pointer;
+}
 
-            <div class="buttons">
-                <button id="btnCalcularCredito" onclick="calcular()">Calcular Crédito</button>
-                <button id="btnReiniciar" onclick="reiniciar()">Reiniciar</button>
-            </div>
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 0 4px rgba(105, 189, 39, 0.14);
+}
 
-            <div class="footer-note">
-                Simulador académico inspirado en una experiencia bancaria corporativa. No representa una herramienta oficial de aprobación real.
-            </div>
-        </div>
-    </div>
+.mini-note {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--texto-secundario);
+    line-height: 1.6;
+}
 
-    <script src="funciones.js"></script>
-    <script src="simulador.js"></script>
-</body>
-</html>
+.error {
+    display: block;
+    margin-top: 6px;
+    min-height: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--rojo-error);
+    line-height: 1.4;
+}
+
+.results-header {
+    margin-top: 28px;
+}
+
+.resultados {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.result-box {
+    background: #ffffff;
+    border: 1px solid var(--gris-borde);
+    border-radius: 18px;
+    padding: 18px;
+    min-height: 92px;
+    box-shadow: 0 6px 14px rgba(31, 45, 47, 0.03);
+}
+
+.result-box-wide {
+    grid-column: span 2;
+}
+
+.result-box small {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #70817b;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+}
+
+.result-box span {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--verde-principal);
+}
+
+.estado-box {
+    margin-top: 22px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    text-align: left;
+    background: #f7faf8;
+    border: 1px solid var(--gris-borde);
+    box-shadow: 0 6px 14px rgba(31, 45, 47, 0.04);
+}
+
+.estado-box small {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6d7e77;
+    font-weight: 700;
+}
+
+.estado-box span {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    letter-spacing: 0.3px;
+}
+
+.buttons {
+    margin-top: 26px;
+    display: flex;
+    gap: 16px;
+}
+
+button {
+    flex: 1;
+    border: none;
+    border-radius: 14px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btnCalcularCredito {
+    background: linear-gradient(135deg, var(--verde-principal) 0%, #7acf34 100%);
+    color: var(--blanco);
+    box-shadow: 0 12px 26px rgba(105, 189, 39, 0.20);
+}
+
+#btnCalcularCredito:hover {
+    background: linear-gradient(135deg, var(--verde-hover) 0%, #69bd27 100%);
+    transform: translateY(-2px);
+}
+
+#btnReiniciar {
+    background: #f3f6f4;
+    color: var(--texto-principal);
+    border: 1px solid var(--gris-borde);
+}
+
+#btnReiniciar:hover {
+    background: #eaf0ec;
+    transform: translateY(-2px);
+}
+
+.footer-note {
+    margin-top: 24px;
+    padding: 16px 18px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--texto-secundario);
+    background: #f7faf8;
+    border: 1px solid #e1e8e3;
+    border-radius: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .section-grid,
+    .resultados {
+        grid-template-columns: 1fr;
+    }
+
+    .result-box-wide {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .header-top {
+        padding: 24px 20px;
+    }
+
+    .header-top h1 {
+        font-size: 28px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .result-box span,
+    .estado-box span {
+        font-size: 22px;
+    }
+}
