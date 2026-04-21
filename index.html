@@ -36,14 +36,32 @@
                         <small class="error" id="errorIngresos"></small>
                     </div>
 
-                    <div class="field">
-                        <label for="txtEgresos">Egresos mensuales</label>
-                        <div class="input-icon">
-                            <span>📉</span>
-                            <input type="text" id="txtEgresos" placeholder="Ej: 1500">
-                        </div>
-                        <small class="error" id="errorEgresos"></small>
-                    </div>
+                 <div class="field">
+    <label for="txtArriendo">Arriendo</label>
+    <div class="input-icon">
+        <span>🏠</span>
+        <input type="text" id="txtArriendo" placeholder="Ej: 500">
+    </div>
+    <small class="error" id="errorArriendo"></small>
+</div>
+
+<div class="field">
+    <label for="txtAlimentacion">Alimentación</label>
+    <div class="input-icon">
+        <span>🍽️</span>
+        <input type="text" id="txtAlimentacion" placeholder="Ej: 300">
+    </div>
+    <small class="error" id="errorAlimentacion"></small>
+</div>
+
+<div class="field">
+    <label for="txtVarios">Varios</label>
+    <div class="input-icon">
+        <span>🧾</span>
+        <input type="text" id="txtVarios" placeholder="Ej: 200">
+    </div>
+    <small class="error" id="errorVarios"></small>
+</div>
 
                     <div class="mini-note">
                         Ingresa tus valores mensuales para estimar tu capacidad de pago.
@@ -106,6 +124,11 @@
                     <small>Capacidad de pago</small>
                     <span id="spnCapacidadPago"></span>
                 </div>
+
+                <div class="result-box">
+    <small>Total gastos</small>
+    <span id="spnTotalGastos"></span>
+</div>
 
                 <div class="result-box">
                     <small>Interés a pagar</small>

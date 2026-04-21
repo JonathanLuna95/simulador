@@ -2,62 +2,70 @@
 
 function calcular() {
 
-     let formularioValido = validarFormulario();
+    let formularioValido = validarFormulario();
 
     if (formularioValido == false) {
         return;
     }
 
     let ingresos = parseFloat(document.getElementById("txtIngresos").value);
-    let egresos = parseFloat(document.getElementById("txtEgresos").value);
- 
-    let disponible = calcularDisponible(ingresos, egresos);
-    recuperarTexto("spnDisponible",disponible);
- 
+    let arriendo = parseFloat(document.getElementById("txtArriendo").value) || 0;
+    let alimentacion = parseFloat(document.getElementById("txtAlimentacion").value) || 0;
+    let varios = parseFloat(document.getElementById("txtVarios").value) || 0;
+
+    let totalGastos = arriendo + alimentacion + varios;
+    recuperarTexto("spnTotalGastos", totalGastos);
+
+    let disponible = calcularDisponible(ingresos, totalGastos);
+    recuperarTexto("spnDisponible", disponible);
+
     let capacidadDePago = calcularCapacidadPago(disponible);
-    recuperarTexto("spnCapacidadPago",capacidadDePago);
+    recuperarTexto("spnCapacidadPago", capacidadDePago);
 
     let montoEntero = recuperarEntero("txtMonto");
     let plazoEntero = recuperarEntero("txtPlazo");
     let tasaInteresEntero = recuperarEntero("txtTasaInteres");
 
-    let interesPorPagar = calcularInteresSimple(montoEntero,tasaInteresEntero,plazoEntero);
+    let interesPorPagar = calcularInteresSimple(montoEntero, tasaInteresEntero, plazoEntero);
     recuperarTexto("spnInteresPagar", interesPorPagar);
-    
-    //let interesAPagar = document.getElementById("spnInteresPagar");
-    //interesAPagar.innerText=interesPorPagar;
 
-    let totalPrestamo = calcularTotalPagar(montoEntero,interesPorPagar);
-    recuperarTextoEntero("spnTotalPrestamo",totalPrestamo );
+    let totalPrestamo = calcularTotalPagar(montoEntero, interesPorPagar);
+    recuperarTextoEntero("spnTotalPrestamo", totalPrestamo);
 
-    let cuotaMensual= calcularCuotaMensual(totalPrestamo,plazoEntero);
-    recuperarTexto("spnCuotaMensual",cuotaMensual);
+    let cuotaMensual = calcularCuotaMensual(totalPrestamo, plazoEntero);
+    recuperarTexto("spnCuotaMensual", cuotaMensual);
 
-    let resultadoCredito = aprobarCredito(capacidadDePago,cuotaMensual);
-  
+    let resultadoCredito = aprobarCredito(capacidadDePago, cuotaMensual);
+
     let estadoCredito = document.getElementById("spnEstadoCredito");
-    
+
     if(resultadoCredito == true){
-        estadoCredito.innerText= "CRÉDITO APROBADO";
+        estadoCredito.innerText = "CRÉDITO APROBADO";
     } else {
-        estadoCredito.innerText= "CRÉDITO RECHAZADO";
+        estadoCredito.innerText = "CRÉDITO RECHAZADO";
     }
 }
 
 function reiniciar(){
 
     eliminarCaja("txtIngresos");
-    eliminarCaja("txtEgresos");
+    eliminarCaja("txtArriendo");
+    eliminarCaja("txtAlimentacion");
+    eliminarCaja("txtVarios");
     eliminarCaja("txtMonto");
     eliminarCaja("txtPlazo");
     eliminarCaja("txtTasaInteres");
 
+    eliminarTexto("spnTotalGastos");
     eliminarTexto("spnDisponible");
     eliminarTexto("spnCapacidadPago");
     eliminarTexto("spnInteresPagar");
     eliminarTexto("spnTotalPrestamo");
     eliminarTexto("spnCuotaMensual");
 
+    limpiarErrores();
+
+    document.getElementById("spnEstadoCredito").innerText = "ANALIZANDO...";
 }
 
 function validarFormulario(){
@@ -66,7 +74,9 @@ function validarFormulario(){
     let esValido = true;
 
     let ingresos = document.getElementById("txtIngresos").value;
-    let egresos = document.getElementById("txtEgresos").value;
+    let arriendo = document.getElementById("txtArriendo").value;
+    let alimentacion = document.getElementById("txtAlimentacion").value;
+    let varios = document.getElementById("txtVarios").value;
     let monto = document.getElementById("txtMonto").value;
     let plazo = document.getElementById("txtPlazo").value;
     let tasa = document.getElementById("txtTasaInteres").value;
@@ -82,17 +92,36 @@ function validarFormulario(){
         esValido = false;
     }
 
-    if (egresos == "") {
-        mostrarError("errorEgresos", "El campo egresos es obligatorio");
+    if (arriendo == "") {
+        mostrarError("errorArriendo", "El campo arriendo es obligatorio");
         esValido = false;
-    } else if (isNaN(egresos)) {
-        mostrarError("errorEgresos", "Ingrese un valor numérico válido");
+    } else if (isNaN(arriendo)) {
+        mostrarError("errorArriendo", "Ingrese un valor numérico válido");
         esValido = false;
-    } else if (Number(egresos) < 0) {
-        mostrarError("errorEgresos", "No puede ser negativo");
+    } else if (Number(arriendo) < 0) {
+        mostrarError("errorArriendo", "No puede ser negativo");
         esValido = false;
-    } else if (!isNaN(ingresos) && Number(egresos) > Number(ingresos)) {
-        mostrarError("errorEgresos", "No pueden ser mayores que los ingresos");
+    }
+
+    if (alimentacion == "") {
+        mostrarError("errorAlimentacion", "El campo alimentación es obligatorio");
+        esValido = false;
+    } else if (isNaN(alimentacion)) {
+        mostrarError("errorAlimentacion", "Ingrese un valor numérico válido");
+        esValido = false;
+    } else if (Number(alimentacion) < 0) {
+        mostrarError("errorAlimentacion", "No puede ser negativo");
+        esValido = false;
+    }
+
+    if (varios == "") {
+        mostrarError("errorVarios", "El campo varios es obligatorio");
+        esValido = false;
+    } else if (isNaN(varios)) {
+        mostrarError("errorVarios", "Ingrese un valor numérico válido");
+        esValido = false;
+    } else if (Number(varios) < 0) {
+        mostrarError("errorVarios", "No puede ser negativo");
         esValido = false;
     }
 
@@ -131,4 +160,3 @@ function validarFormulario(){
 
     return esValido;
 }
-
